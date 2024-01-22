@@ -63,6 +63,18 @@ const projectData = async (req, res) => {
 }
 
 
+const certificates = async(req, res) => {
+	try{
+		const data = await prisma.certificates.findMany();
+		if(data){
+			res.json({status: "success", data: data});
+		}
+	}catch (err) {
+		console.log("certificates Data : ", err);
+	}
+}
 
 
-module.exports = { AboutData, skillData, educationData, projectData }
+
+
+module.exports = { AboutData, skillData, educationData, projectData, certificates }
